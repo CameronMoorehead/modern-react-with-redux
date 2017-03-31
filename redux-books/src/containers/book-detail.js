@@ -3,9 +3,14 @@ import { connect } from 'react-redux'
 
 class BookDetail extends Component {
   render() {
+    if (!this.props.activeBook) {
+      return <div>Select a book to get started.</div>
+    }
     return (
       <div>
-        {this.props.activeBook ? this.props.activeBook.title : 'Select A Book!'} 
+        <h3>Details for:</h3>
+          <div>Title: {this.props.activeBook.title}</div>
+          <div>Pages: {this.props.activeBook.pages}</div>
       </div>
     )
   }
