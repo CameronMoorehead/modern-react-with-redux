@@ -23,7 +23,7 @@ class BookList extends Component {
         {this.renderList()}
       </ul>
     )
-  }  
+  }
 }
 
 function mapStateToProps(state) {
