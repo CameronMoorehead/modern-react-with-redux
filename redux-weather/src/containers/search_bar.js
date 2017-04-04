@@ -45,9 +45,9 @@ class SearchBar extends Component {
   }
 }
 
-// This has exposed fetchWeather as a key to this.props.fetchWeather, and provided
-// the returned value (the action) to 'dispatch'. This results in the action being
-// distributed to all of our reducers.
+// This has exposed fetchWeather as a key to this.props.fetchWeather,
+// and provided the returned value (the action) to 'dispatch'.
+// This results in the action being distributed to all of our reducers.
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchWeather: fetchWeather }, dispatch)
 }
