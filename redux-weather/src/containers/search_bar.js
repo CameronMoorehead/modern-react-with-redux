@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { fetchWeather, FETCH_WEATHER } from '../actions/index'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-export default class SearchBar extends Component {
+class SearchBar extends Component {
   constructor(props) {
     super(props)
 
@@ -38,3 +40,13 @@ export default class SearchBar extends Component {
     )
   }
 }
+
+// Anything returned from this function will end up as props
+// on the SearchBar container
+function mapDispatchToProps(dispatch) {
+  // Whenever fetchWeather is called, the result should be passed
+  // to all of our reducers
+  return bindActionCreators({ fetchWeather }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(SearchBar)
