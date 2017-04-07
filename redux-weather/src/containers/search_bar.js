@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fetchWeather, FETCH_WEATHER } from '../actions/index'
 
 export default class SearchBar extends Component {
   constructor(props) {
@@ -12,14 +13,13 @@ export default class SearchBar extends Component {
     }
   }
 
-  onFormSubmit(event) {
-    event.preventDefault()
-    console.log(this.state.term)
-    this.form.reset()
-  }
-
   onInputChange(event) {
     this.setState({term: event.target.value})
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault()
+    fetchWeather(this.state.term)
   }
 
   render() {
