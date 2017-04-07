@@ -19,7 +19,7 @@ export default class SearchBar extends Component {
 
   onFormSubmit(event) {
     event.preventDefault()
-    fetchWeather(this.state.term)
+    console.log(fetchWeather(this.state.term))
   }
 
   render() {

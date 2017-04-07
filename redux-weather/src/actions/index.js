@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const API_KEY = "3708c166659ade50c5d7b6a8d4cef59c"
 
 export const FETCH_WEATHER = "FETCH_WEATHER"
