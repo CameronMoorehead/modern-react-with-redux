@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import { newPost } from '../actions/index'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { browserHistory } from 'react-router'
 
-export default class PostsNew extends Component {
+class PostsNew extends Component {
   constructor(props) {
     super(props)
 
@@ -28,11 +32,18 @@ export default class PostsNew extends Component {
 
   handleFormSubmit(e) {
     e.preventDefault()
-    console.log({
+    let postData = ({
       title: this.state.title,
       categories: this.state.categories,
       content: this.state.content
     })
+    this.props.newPost(postData)
+    this.setState = {
+      title: "",
+      categories: "",
+      content: ""
+    }
+    browserHistory.push('/')
   }
 
   render() {
@@ -57,7 +68,7 @@ export default class PostsNew extends Component {
           </button>
         </span>
         <span>
-          <button onClick={location.reload} className="btn btn-secondary">
+          <button className="btn btn-secondary">
             Cancel
           </button>
         </span>
@@ -65,3 +76,9 @@ export default class PostsNew extends Component {
     )
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ newPost }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(PostsNew)

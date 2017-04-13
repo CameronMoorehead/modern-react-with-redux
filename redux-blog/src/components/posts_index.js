@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { fetchPosts } from '../actions/index'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
+import PostsSingle from './posts_single'
 
 class PostsIndex extends Component {
   componentWillMount() {
@@ -13,9 +14,16 @@ class PostsIndex extends Component {
         List of Blog posts
         <Link to="/posts/new">
           <button className="btn btn-secondary">
-            New Post
+            Add Post
           </button>
         </Link>
+          {this.props.posts.map(post => {
+            return (
+                <PostsSingle
+                  key={post.id}
+                  post={post} />
+              )
+          })}
       </div>
     )
   }
