@@ -11,13 +11,13 @@ class PostsContainer extends Component {
   }
 
   componentDidMount() {
-    return fetchIndexPosts()
+    this.props.fetchIndexPosts()
   }
 
   render() {
     return (
       <div>
-        <PostsIndex />
+        <PostsIndex indexPosts={this.props.indexPosts}/>
       </div>
     )
   }
@@ -25,7 +25,7 @@ class PostsContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    indexPosts: state
+    indexPosts: state.indexPosts
   }
 }
 
