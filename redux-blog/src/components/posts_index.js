@@ -1,20 +1,30 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { fetchPosts } from '../actions/index'
+import { connect } from 'react-redux'
+import { Link } from 'react-router'
 
-const PostsIndex = (props) => {
-  if (!props.indexPosts) {
+class PostsIndex extends Component {
+  componentWillMount() {
+    this.props.fetchPosts()
+  }
+  render() {
     return (
-      <div>loading...</div>
+      <div>
+        List of Blog posts
+        <Link to="/posts/new">
+          <button className="btn btn-secondary">
+            New Post
+          </button>
+        </Link>
+      </div>
     )
   }
-  return  (
-    <div>
-      List of blog posts:
-      <hr />
-      {props.indexPosts.map(post => {
-        return <div key={post.id}>{post.content}<hr /></div>
-      })}
-    </div>
-  )
 }
 
-export default PostsIndex
+function mapStatetoProps(state) {
+  return {
+    posts: state.posts.all
+  }
+}
+
+export default connect(mapStatetoProps, { fetchPosts })(PostsIndex)
