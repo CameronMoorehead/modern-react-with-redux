@@ -13,17 +13,3 @@ export function fetchPosts() {
     payload: request
   }
 }
-
-export function newPost(postData) {
-  const request = axios.post(`${ROOT_URL}/posts/${API_KEY}`, {
-    title: postData.title,
-    categories: postData.categories,
-    content: postData.content
-  })
-  console.log(postData)
-  console.log(postData.title)
-  return {
-    type: NEW_POST,
-    payload: request
-  }
-}
