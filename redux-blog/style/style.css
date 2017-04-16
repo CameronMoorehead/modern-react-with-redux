@@ -1,11 +1,3 @@
-.single-post {
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-between;
-}
-.single-post-title {
-  float: left;
-}
-.single-post-category {
-  float: right;
+form a {
+  margin-left: 5px;
 }
